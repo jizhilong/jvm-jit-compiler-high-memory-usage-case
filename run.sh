@@ -14,6 +14,7 @@ else
   TIME_PREFIX=''
 fi
 
+uname -a
 set -x
 
 $TIME_PREFIX java -server -cp . \
