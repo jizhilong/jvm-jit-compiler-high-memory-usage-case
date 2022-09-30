@@ -10,6 +10,12 @@ just execute command `./run.sh` in a jdk(8+) box.
 ## test result
 Following is the result on openjdk 17 and openjdk 1.8. In both case, high compiler memory usage were observed, especially on openjdk 17.
 
+| jdk version | peak rss | peak NMT.total.committed | peak NMT.Compiler.committed | peak NMT.Heap.committed |
+| ------ | ------ |  ------ |  ------ |   ------ | 
+| 17 |1488MB | 1028MB| 958MB | 20MB |
+| 1.8 | 110MB | 105MB | 62MB | 20MB |
+
+
 on openjdk 17:
 
 ```
