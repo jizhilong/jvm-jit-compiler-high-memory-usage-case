@@ -1,5 +1,5 @@
 ## what is this
-This little java program shows that a jvm application may cause the jit compiler consume nearyly a gigabyte of memory, while keep the
+This program shows that a jvm application may cause the jit compiler consume nearly a gigabyte of memory, while keep the
 jvm heap size as small as tens of megabytes.
 
 
