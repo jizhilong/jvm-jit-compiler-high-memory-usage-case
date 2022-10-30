@@ -13,6 +13,7 @@ Following is the result on openjdk 17 and openjdk 1.8. In both case, high compil
 | jdk version | peak rss | peak NMT.total.committed | peak NMT.Compiler.committed | peak NMT.Heap.committed |
 | ------ | ------ |  ------ |  ------ |   ------ | 
 | 17 |1488MB | 1028MB| 958MB | 20MB |
+| 17(graalvm 22.3.0) | 214MB | 98MB| 32MB | 20MB |
 | 1.8 | 110MB | 105MB | 62MB | 20MB |
 
 
@@ -92,4 +93,44 @@ Symbol: 1 MB
          25203698005  instructions retired
          21190182954  cycles elapsed
             83959808  peak memory footprint
+```
+
+on openjdk 17.0.5 with GraalVM CE 22.3.0:
+
+```
+openjdk version "17.0.5" 2022-10-18
+OpenJDK Runtime Environment GraalVM CE 22.3.0 (build 17.0.5+8-jvmci-22.3-b08)
+OpenJDK 64-Bit Server VM GraalVM CE 22.3.0 (build 17.0.5+8-jvmci-22.3-b08, mixed mode, sharing)
+
+running at jit level 4
+Darwin macmini-jzl.local 21.2.0 Darwin Kernel Version 21.2.0: Sun Nov 28 20:28:54 PST 2021; root:xnu-8019.61.5~1/RELEASE_X86_64 x86_64
++ /usr/bin/time -l java -server -cp . -XX:+TieredCompilation -XX:TieredStopAtLevel=4 -XX:+UseSerialGC -Xms20m -Xmx20m -XX:NativeMemoryTracking=summary Test
+peak total committed happened at 377 ms, done at 24540 ms
+total: 98 MB
+Java Heap: 20 MB
+Thread: 20 MB
+Code: 7 MB
+Compiler: 32 MB
+Symbol: 1 MB
+Shared class space: 11 MB
+Arena Chunk: 1 MB
+Metaspace: 2 MB
+       24.61 real         6.52 user         0.77 sys
+           224817152  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               69536  page reclaims
+                   0  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   3  signals received
+                   0  voluntary context switches
+               44057  involuntary context switches
+         29593853367  instructions retired
+         20563329880  cycles elapsed
+           194543616  peak memory footprint
 ```
